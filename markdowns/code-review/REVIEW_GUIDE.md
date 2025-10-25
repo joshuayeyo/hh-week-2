@@ -79,24 +79,32 @@ Comment: 주석 추가 oR 변경
 
 ## 코딩 스타일
 
-### 네이밍 컨벤션
+**상세한 코딩 표준은 `markdowns/process/CODING_STANDARDS.md`를 참조하세요.**
+**AI 기반 개발 워크플로우는 `markdowns/process/DEVELOPMENT_WORKFLOW.md`를 참조하세요.**
+
+### 주요 네이밍 컨벤션
 
 - **풀네임 사용**: 축약형보다는 명확한 풀네임 사용
 
   - 🙆🏻‍♂️: `aespaKarina`
   - 🙅🏻‍♂️: `aspKrna`
 
-- **함수명**: 동사 + 명사 형태로 명확한 동작 표현
+- **함수명**: 동사 + 명사 형태로 명확한 동작 표현 (15-20줄 이하)
 
   - 🙆🏻‍♂️: `getDaysInMonth`, `formatWeek`, `convertEventToDateRange`
   - 🙅🏻‍♂️: `monthDays`, `weekFormat`, `eventToRange`
+
+- **폴더명**: kebab-case로 통일
+
+  - 🙆🏻‍♂️: `event-forms`, `code-review`
+  - 🙅🏻‍♂️: `eventForms`, `codeReview`
 
 - **상수명**: UPPER_SNAKE_CASE 사용
 
   - 🙆🏻‍♂️: `AESPA_MEMBERS`, `NOTIFICATION_OPTIONS`
   - 🙅🏻‍♂️: `aespaMembers`, `notificationOptions`
 
-- **타입명**: PascalCase + 명확한 접미사
+- **타입명**: PascalCase + 명확한 접미사 (별도 `src/types/` 디렉토리에 정의)
   - 🙆🏻‍♂️: `EventForm.types`, `Calendar.types`, `RepeatType`
   - 🙅🏻‍♂️: `eventform`, `calendar`, `repeat`
 
@@ -157,8 +165,9 @@ Comment: 주석 추가 oR 변경
   // 주간 및 월간 뷰 표시를 관리하는 캘린더 컴포넌트
   ```
 
-- **파일 길이**: 최대한 80줄 이하로 유지
-  - 80줄 초과 시 파일 최상단 또는 이슈에 **사유** 명시
+- **파일 길이**: 코드 파일(.ts, .tsx, .js, .jsx)은 주석 포함하여 최대한 80줄 이하로 유지
+  - 코드 파일이 80줄 초과 시 파일 최상단에 주석으로 **사유** 명시
+  - 문서 파일(.md, .json, .yaml)은 80줄 제한에서 제외
 
 ### Import/Export 스타일
 
