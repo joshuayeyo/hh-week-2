@@ -37,7 +37,8 @@ const saveSchedule = async (
   user: UserEvent,
   form: Omit<Event, 'id' | 'notificationTime' | 'repeat'>
 ) => {
-  const { title, date, startTime, endTime, location, description, category } = form;
+  const { title, date, startTime, endTime, location, description, category } =
+    form;
 
   await user.click(screen.getAllByText('일정 추가')[0]);
 
@@ -48,7 +49,9 @@ const saveSchedule = async (
   await user.type(screen.getByLabelText('설명'), description);
   await user.type(screen.getByLabelText('위치'), location);
   await user.click(screen.getByLabelText('카테고리'));
-  await user.click(within(screen.getByLabelText('카테고리')).getByRole('combobox'));
+  await user.click(
+    within(screen.getByLabelText('카테고리')).getByRole('combobox')
+  );
   await user.click(screen.getByRole('option', { name: `${category}-option` }));
 
   await user.click(screen.getByTestId('event-submit-button'));
@@ -118,7 +121,9 @@ describe('일정 뷰', () => {
     // ! 현재 시스템 시간 2025-10-01
     const { user } = setup(<App />);
 
-    await user.click(within(screen.getByLabelText('뷰 타입 선택')).getByRole('combobox'));
+    await user.click(
+      within(screen.getByLabelText('뷰 타입 선택')).getByRole('combobox')
+    );
     await user.click(screen.getByRole('option', { name: 'week-option' }));
 
     // ! 일정 로딩 완료 후 테스트
@@ -142,7 +147,9 @@ describe('일정 뷰', () => {
       category: '업무',
     });
 
-    await user.click(within(screen.getByLabelText('뷰 타입 선택')).getByRole('combobox'));
+    await user.click(
+      within(screen.getByLabelText('뷰 타입 선택')).getByRole('combobox')
+    );
     await user.click(screen.getByRole('option', { name: 'week-option' }));
 
     const weekView = within(screen.getByTestId('week-view'));
@@ -299,7 +306,9 @@ describe('일정 충돌', () => {
 
     expect(screen.getByText('일정 겹침 경고')).toBeInTheDocument();
     expect(screen.getByText(/다음 일정과 겹칩니다/)).toBeInTheDocument();
-    expect(screen.getByText('기존 회의 (2025-10-15 09:00-10:00)')).toBeInTheDocument();
+    expect(
+      screen.getByText('기존 회의 (2025-10-15 09:00-10:00)')
+    ).toBeInTheDocument();
   });
 
   it('기존 일정의 시간을 수정하여 충돌이 발생하면 경고가 노출된다', async () => {
@@ -320,7 +329,9 @@ describe('일정 충돌', () => {
 
     expect(screen.getByText('일정 겹침 경고')).toBeInTheDocument();
     expect(screen.getByText(/다음 일정과 겹칩니다/)).toBeInTheDocument();
-    expect(screen.getByText('기존 회의 (2025-10-15 09:00-10:00)')).toBeInTheDocument();
+    expect(
+      screen.getByText('기존 회의 (2025-10-15 09:00-10:00)')
+    ).toBeInTheDocument();
   });
 });
 
@@ -332,11 +343,15 @@ it('notificationTime을 10으로 하면 지정 시간 10분 전 알람 텍스트
   // ! 일정 로딩 완료 후 테스트
   await screen.findByText('일정 로딩 완료!');
 
-  expect(screen.queryByText('10분 후 기존 회의 일정이 시작됩니다.')).not.toBeInTheDocument();
+  expect(
+    screen.queryByText('10분 후 기존 회의 일정이 시작됩니다.')
+  ).not.toBeInTheDocument();
 
   act(() => {
     vi.advanceTimersByTime(1000);
   });
 
-  expect(screen.getByText('10분 후 기존 회의 일정이 시작됩니다.')).toBeInTheDocument();
+  expect(
+    screen.getByText('10분 후 기존 회의 일정이 시작됩니다.')
+  ).toBeInTheDocument();
 });

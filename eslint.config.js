@@ -53,7 +53,7 @@ export default [
   // Main configuration for source files
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
-    ignores: ['node_modules/**', 'dist/**'],
+    ignores: ['node_modules/**', 'dist/**', 'build/**', 'coverage/**'],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
@@ -70,6 +70,7 @@ export default [
 
       // ESLint rules
       'no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'error',
 
       // React rules
       'react/prop-types': 'off',

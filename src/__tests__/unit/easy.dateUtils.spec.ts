@@ -235,7 +235,9 @@ describe('isDateInRange', () => {
     const invalidRangeStart = new Date('2025-07-31');
     const invalidRangeEnd = new Date('2025-07-01');
     const testDate = new Date('2025-07-15');
-    expect(isDateInRange(testDate, invalidRangeStart, invalidRangeEnd)).toBe(false);
+    expect(isDateInRange(testDate, invalidRangeStart, invalidRangeEnd)).toBe(
+      false
+    );
   });
 });
 

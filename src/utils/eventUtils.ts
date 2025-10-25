@@ -1,7 +1,11 @@
 import { Event } from '../types';
 import { getWeekDates, isDateInRange } from './dateUtils';
 
-function filterEventsByDateRange(events: Event[], start: Date, end: Date): Event[] {
+function filterEventsByDateRange(
+  events: Event[],
+  start: Date,
+  end: Date
+): Event[] {
   return events.filter((event) => {
     const eventDate = new Date(event.date);
     return isDateInRange(eventDate, start, end);
@@ -15,7 +19,9 @@ function containsTerm(target: string, term: string) {
 function searchEvents(events: Event[], term: string) {
   return events.filter(
     ({ title, description, location }) =>
-      containsTerm(title, term) || containsTerm(description, term) || containsTerm(location, term)
+      containsTerm(title, term) ||
+      containsTerm(description, term) ||
+      containsTerm(location, term)
   );
 }
 
@@ -25,7 +31,11 @@ function filterEventsByDateRangeAtWeek(events: Event[], currentDate: Date) {
 }
 
 function filterEventsByDateRangeAtMonth(events: Event[], currentDate: Date) {
-  const monthStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  const monthStart = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    1
+  );
   const monthEnd = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth() + 1,
