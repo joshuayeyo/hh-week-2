@@ -1,8 +1,8 @@
-import { Event } from '../../types';
-import { getFilteredEvents } from '../../utils/eventUtils';
+import { EventProps } from '@/types/events/Event.types';
+import { getFilteredEvents } from '@/utils/getFilteredEvents';
 
 describe('getFilteredEvents', () => {
-  const events: Event[] = [
+  const events: EventProps[] = [
     {
       id: '1',
       title: '이벤트 1',
@@ -111,7 +111,7 @@ describe('getFilteredEvents', () => {
   });
 
   it('월의 경계에 있는 이벤트를 올바르게 필터링한다', () => {
-    const borderEvents: Event[] = [
+    const borderEvents: EventProps[] = [
       {
         id: '4',
         title: '6월 마지막 날 이벤트',

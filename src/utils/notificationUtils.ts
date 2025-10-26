@@ -1,10 +1,10 @@
-import { Event } from '../types';
+import { EventProps } from '@/types/events/Event.types';
 
 const 초 = 1000;
 const 분 = 초 * 60;
 
 export function getUpcomingEvents(
-  events: Event[],
+  events: EventProps[],
   now: Date,
   notifiedEvents: string[]
 ) {
@@ -19,6 +19,9 @@ export function getUpcomingEvents(
   });
 }
 
-export function createNotificationMessage({ notificationTime, title }: Event) {
+export function createNotificationMessage({
+  notificationTime,
+  title,
+}: EventProps) {
   return `${notificationTime}분 후 ${title} 일정이 시작됩니다.`;
 }

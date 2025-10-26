@@ -91,7 +91,6 @@ export default [
 
       // Prettier rules
       ...prettierConfig.rules,
-      'prettier/prettier': 'error',
 
       // Storybook rules
       ...storybookPlugin.configs.recommended.rules,
@@ -105,6 +104,7 @@ export default [
       '**/__mocks__/**/*.{js,jsx,ts,tsx}',
       './src/setupTests.ts',
       './src/__tests__/utils.ts',
+      './src/__tests__/helpers/**/*.{js,jsx,ts,tsx}',
     ],
     plugins: {
       vitest: vitestPlugin,

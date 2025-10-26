@@ -1,9 +1,9 @@
 import { act, renderHook } from '@testing-library/react';
 
-import { useSearch } from '../../hooks/useSearch.ts';
-import { Event } from '../../types.ts';
+import { useSearch } from '@/hooks/useSearch.ts';
+import { EventProps } from '@/types/events/Event.types';
 
-const mockEvents: Event[] = [
+const mockEvents: EventProps[] = [
   {
     id: '1',
     title: '회의',

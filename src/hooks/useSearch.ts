@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
 
-import { Event } from '../types';
-import { getFilteredEvents } from '../utils/eventUtils';
+import { EventProps } from '@/types/events/Event.types';
+import { getFilteredEvents } from '@/utils/getFilteredEvents';
 
 export const useSearch = (
-  events: Event[],
+  events: EventProps[],
   currentDate: Date,
   view: 'week' | 'month'
 ) => {
