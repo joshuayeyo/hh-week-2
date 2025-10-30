@@ -9,3 +9,6 @@ export interface EventFormProps extends BasicFieldsProps, DetailFieldsProps {
   repeat: RepeatInfoProps;
   notificationTime: number; // 분 단위로 저장
 }
+
+// 별칭 타입 - 테스트 호환성을 위해 추가
+export type EventForm = EventFormProps;
