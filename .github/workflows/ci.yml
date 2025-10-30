@@ -27,7 +27,7 @@ jobs:
       - name: test basic
         run: |
           pnpm install
-          pnpm run lint:check
+          pnpm run lint
   test:
     runs-on: ubuntu-latest
     steps:
